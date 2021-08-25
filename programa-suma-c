@@ -1,1 +1,21 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+int main(int argc, char *argv[]) {
+    
+    int numberOne, numberTwo, numberThree, suma;
+    printf("Bienvenido a esta calculadora! \n");
+    printf("Este programa realiza la suma de tres numeros. \n");
+    printf( "  Introduzca el primer numero: \n " );
+    scanf( "%d", &numberOne );
+    printf( "Introduzca el segundo numero:\n " );
+    scanf( "%d", &numberTwo );
+    printf( "Introduzca el tercer numero:\n " );
+    scanf( "%d", &numberThree );
+    suma=numberOne+numberTwo+numberThree;
+    printf("El resultado es:", suma);
+    return 0;
+}
 
