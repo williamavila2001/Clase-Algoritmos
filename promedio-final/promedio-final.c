@@ -1,62 +1,54 @@
 #include <stdio.h>
+#include <stdlib.h>
 
+void writeMessageNoteInvalidAndExit(){
+    printf("Nota invalida.\n");  
+    exit(0);
+}
+void validateNote(float note){
+    if(note < 0.0 || note >5.0){
+        writeMessageNoteInvalidAndExit();
+    }
+}
 
+float requestNote(char* noteNumber){
+    float note;
+    printf("Ingrese la calificacion \n", noteNumber);
+    scanf ("%f", &note);
+    validateNote(note);
+    return note;
+}   
 
+float calcProm(float notaOne, float notaTwo, float notaThree, float notaFour, float notaFive){
+    return(notaOne+notaTwo+notaThree+notaFour+notaFive)/5;
+}
+
+void validateProm(float promedio){
+    printf("\n Su promedio es: %f ", promedio);
+    if( promedio >= 2.95){
+        printf("Usted aprovo la asignatura. \n");
+    } else {
+        printf("Usted NO aprovo la asignatura. \n");
+    } 
+}
 int main() {
-    double notaOne;  
-    double notaTwo;
-    double notaThree; 
-    double notaFour;
-    double notaFive;
-    double suma;
-    double notaFinal;
 
     printf ("Este programa realiza el promedio de 5 notas \n");
 
-    printf ("Digite la primer nota:  \n");
-    scanf ("%lf", &notaOne);
-        if (notaOne>=0 && notaOne <=5){
-            printf ("Digite la segunda nota:  \n");
-            scanf ("%lf", &notaTwo);
-        }else{
-        printf("Usted digito alguna nota mal \n");
-        }
+    float notaOne;
+    float notaTwo;
+    float notaThree;
+    float notaFour;
+    float notaFive;
+    float promedio;
 
-        if (notaTwo>=0 && notaTwo <=5){
-            printf ("Digite la tercera nota:  \n");
-            scanf ("%lf", &notaThree);  
-        }else{
-        printf("Usted digito alguna nota mal \n");
-        }
-        
-        if (notaThree>=0 && notaThree<=5){
-            printf ("Digite la cuarta nota:  \n");
-            scanf ("%lf", &notaFour);  
-        }else{
-        printf("Usted digito alguna nota mal \n");
-        }
-        
-        if (notaFour>=0 && notaFour<=5){
-            printf ("Digite la quinta nota:  ");
-            scanf ("%lf", &notaFive); 
-        }else{
-        printf("Usted digito alguna nota mal \n");
-        } 
-        if (notaFive>=0 && notaFive <=5){
-    suma= notaOne+notaTwo+notaThree+notaFour+notaFive;
-}else{
-        printf("Usted digito alguna nota mal \n");
-}
+    notaOne=requestNote("Primera");
+    notaTwo=requestNote("Segunda");
+    notaThree=requestNote("Tercera");
+    notaFour=requestNote("Cuarta");
+    notaFive=requestNote("Quinta");
 
-
-
-    notaFinal= suma/5;
-    if (notaFinal>=2.95){
-        printf ("El estudiante aprobo la materia, con un promedio de:  %lf",notaFinal);
-    }else{
-        printf ("El estudiante NO aprobo la materia, con un promedio de:  %lf",notaFinal);
-    }
-           
-
+    promedio = calcProm(notaOne,notaTwo,notaThree,notaFour,notaFive);
+    validateProm(promedio);
 	return 0;
 }
